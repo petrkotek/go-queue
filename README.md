@@ -1,5 +1,7 @@
 go-queue
 ========
+[![Build Status](https://travis-ci.org/petrkotek/go-queue.svg?branch=master)](https://travis-ci.org/petrkotek/go-queue)
+[![Coverage Status](https://coveralls.io/repos/petrkotek/go-queue/badge.svg?branch=master&service=github)](https://coveralls.io/github/petrkotek/go-vector?branch=master)
 
 ## About
 
