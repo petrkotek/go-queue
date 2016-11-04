@@ -19,7 +19,7 @@ func TestOverflowingQueue_Enqueue_DoesntBlock(t *testing.T) {
 	queue.Enqueue(5)
 }
 
-func TestOverflowingQueue_Enqueue_DiscardItems(t *testing.T) {
+func TestOverflowingQueue_Enqueue_DiscardsItems(t *testing.T) {
 	queue := NewOverflowingQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
