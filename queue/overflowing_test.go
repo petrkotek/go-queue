@@ -66,6 +66,7 @@ func TestOverflowingQueue_DequeueChan(t *testing.T) {
 	queue := NewOverflowingQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
+	queue.Close()
 
 	dequeueChan := queue.DequeueChan()
 	item1 := <-dequeueChan
@@ -84,6 +85,7 @@ func TestOverflowingQueue_DequeueAndDequeueChan(t *testing.T) {
 	queue := NewOverflowingQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
+	queue.Close()
 
 	dequeueChan := queue.DequeueChan()
 	item1 := <-dequeueChan
