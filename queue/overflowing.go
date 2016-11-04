@@ -39,3 +39,7 @@ func (q *OverflowingQueue) Dequeue() interface{} {
 func (q *OverflowingQueue) DequeueChan() <-chan interface{} {
 	return q.items
 }
+
+func (q *OverflowingQueue) Close() {
+	close(q.items)
+}
