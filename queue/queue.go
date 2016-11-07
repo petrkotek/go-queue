@@ -2,8 +2,10 @@ package queue
 
 // Queue is a standard queue data structure, which allows operations Enqueue and Dequeue.
 type Queue interface {
-	// Enqueue
-	Enqueue(interface{})
+	// Enqueue adds an item to a queue. If it was added successfully, returns true, otherwise false (e.g. in case
+	// when the queue capacity is limited & was reached).
+	Enqueue(interface{}) bool
+	// Dequeue gets an item from the (FIFO) queue and removes it from the queue.
 	Dequeue() interface{}
 }
 
