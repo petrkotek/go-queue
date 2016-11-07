@@ -2,16 +2,16 @@ package queue
 
 import "testing"
 
-func TestOverflowingQueue_Dequeue_WithoutItems(t *testing.T) {
-	queue := NewOverflowingQueue(3)
+func TestLeakyQueue_Dequeue_WithoutItems(t *testing.T) {
+	queue := NewLeakyQueue(3)
 	item := queue.Dequeue()
 	if item != nil {
 		t.Errorf("Expected to return nil, got %v", item)
 	}
 }
 
-func TestOverflowingQueue_Enqueue_DoesntBlock(t *testing.T) {
-	queue := NewOverflowingQueue(3)
+func TestLeakyQueue_Enqueue_DoesntBlock(t *testing.T) {
+	queue := NewLeakyQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
 	queue.Enqueue(3)
@@ -19,8 +19,8 @@ func TestOverflowingQueue_Enqueue_DoesntBlock(t *testing.T) {
 	queue.Enqueue(5)
 }
 
-func TestOverflowingQueue_Enqueue_DiscardsItems(t *testing.T) {
-	queue := NewOverflowingQueue(3)
+func TestLeakyQueue_Enqueue_DiscardsItems(t *testing.T) {
+	queue := NewLeakyQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
 	queue.Enqueue(3)
@@ -40,8 +40,8 @@ func TestOverflowingQueue_Enqueue_DiscardsItems(t *testing.T) {
 	}
 }
 
-func TestOverflowingQueue_Enqueue_WithZeroSize(t *testing.T) {
-	queue := NewOverflowingQueue(0)
+func TestLeakyQueue_Enqueue_WithZeroSize(t *testing.T) {
+	queue := NewLeakyQueue(0)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
 	item := queue.Dequeue()
@@ -50,8 +50,8 @@ func TestOverflowingQueue_Enqueue_WithZeroSize(t *testing.T) {
 	}
 }
 
-func TestOverflowingQueue_EnqueueDequeueCombination(t *testing.T) {
-	queue := NewOverflowingQueue(3)
+func TestLeakyQueue_EnqueueDequeueCombination(t *testing.T) {
+	queue := NewLeakyQueue(3)
 	queue.Enqueue(1)
 	if val := queue.Dequeue(); val != 1 {
 		t.Fatalf("Expected 1, got %v", val)
@@ -62,8 +62,8 @@ func TestOverflowingQueue_EnqueueDequeueCombination(t *testing.T) {
 	}
 }
 
-func TestOverflowingQueue_DequeueChan(t *testing.T) {
-	queue := NewOverflowingQueue(3)
+func TestLeakyQueue_DequeueChan(t *testing.T) {
+	queue := NewLeakyQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
 	queue.Close()
@@ -81,8 +81,8 @@ func TestOverflowingQueue_DequeueChan(t *testing.T) {
 	}
 }
 
-func TestOverflowingQueue_DequeueAndDequeueChan(t *testing.T) {
-	queue := NewOverflowingQueue(3)
+func TestLeakyQueue_DequeueAndDequeueChan(t *testing.T) {
+	queue := NewLeakyQueue(3)
 	queue.Enqueue(1)
 	queue.Enqueue(2)
 	queue.Close()

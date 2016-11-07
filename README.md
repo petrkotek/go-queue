@@ -6,7 +6,7 @@ go-queue
 ## About
 
 Currently has only one implementation of a queue in golang:
-- `OverflowingQueue`, which has specified capacity and starts discarding new items, when capacity is reached.
+- `LeakyQueue`, which has specified capacity and starts discarding new items, when capacity is reached.
 
 ## Usage
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {    
-        myQueue := queue.NewOverflowingQueue(10)
+        myQueue := queue.NewLeakyQueue(10)
         myQueue.Enqueue(42)
         myQueue.Enqueue(123)
         fmt.Println(myQueue.Dequeue()) // 42
